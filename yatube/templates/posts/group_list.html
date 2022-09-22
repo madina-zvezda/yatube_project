@@ -31,13 +31,8 @@
   <body>
     <h1>{{ text }}</h1>
     <body>       
-        <header>
-          {% include 'includes/header.html' %}     
-        </header>
     <main>
-        {% block content %}
-          Пост подъехал
-        {% endblock %}
+        <h1>Пост подъехал </h1>
       <!-- класс py-5 создает отступы сверху и снизу блока -->
       <div class="container py-5">
         <h1>Лев Толстой – зеркало русской революции.</h1>
@@ -107,9 +102,6 @@
         <!-- под последним постом нет линии -->
       </div>  
     </main>
-    <footer>
-        {% include 'includes/footer.html' %} 
-      </footer>
   </body>
 </html>
 
