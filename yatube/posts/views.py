@@ -1,21 +1,18 @@
-from re import template
 from django.shortcuts import render
 from .models import Post
 
 # Create your views here.
 
 def index(request):
-    templates = 'posts/index.html'
-    title = 'Социльная сеть для блогеров'
-
-    posts = Post.objects.all()
-
+    # Одна строка вместо тысячи слов на SQL:
+    # в переменную posts будет сохранена выборка из 10 объектов модели Post,
+    # отсортированных по полю pub_date по убыванию (от больших значений к меньшим)
+    posts = Post.objects.order_by('-pub_date')[:10]
+    # В словаре context отправляем информацию в шаблон
     context = {
-        'title': title,
-        'text': 'Это главная страница проекта Yatube',
         'posts': posts,
     }
-    return render(request, templates, context) 
+    return render(request, 'posts/index.html', context)  
 
 def group_posts(request, slug):
     templates = 'posts/group_list.html'
