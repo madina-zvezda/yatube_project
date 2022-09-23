@@ -1,16 +1,19 @@
 from re import template
-from django.http import HttpResponse
 from django.shortcuts import render
-
+from .models import Post
 
 # Create your views here.
 
 def index(request):
     templates = 'posts/index.html'
     title = 'Социльная сеть для блогеров'
+
+    posts = Post.objects.all()
+
     context = {
         'title': title,
         'text': 'Это главная страница проекта Yatube',
+        'posts': posts,
     }
     return render(request, templates, context) 
 
