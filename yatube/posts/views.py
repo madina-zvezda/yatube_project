@@ -22,4 +22,3 @@ def group_posts(request, slug):
         'text': 'Здесь будет информация о группах проекта Yatube',
     }
     return render(request, templates, context)
-
